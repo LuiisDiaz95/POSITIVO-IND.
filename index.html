@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Positivo Ind. | Indumentaria masculina</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a href="#inicio" class="logo">POSITIVO <i>IND.</i></a>
+    <button class="burger" aria-label="Menú" onclick="document.body.classList.toggle('open')">☰</button>
+    <nav>
+      <a href="#coleccion">Colección</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#local">Local</a>
+      <a href="#contacto" class="btn-outline">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="hero-content">
+      <span class="eyebrow">Colección 2025</span>
+      <h1>Vestí tu<br>mejor<br>versión.</h1>
+      <p>Indumentaria masculina con actitud, diseñada para acompañarte todos los días.</p>
+      <a href="#coleccion" class="btn">Ver colección →</a>
+    </div>
+  </section>
+
+  <section id="coleccion" class="section">
+    <span class="eyebrow">Colección</span>
+    <h2>Lo nuevo</h2>
+    <div class="filtros" id="filtros">
+      <button class="active" data-cat="todos">Todos</button>
+      <button data-cat="remeras">Remeras</button>
+      <button data-cat="buzos">Buzos</button>
+      <button data-cat="camperas">Camperas</button>
+      <button data-cat="pantalones">Pantalones</button>
+    </div>
+    <div class="grid" id="productos"></div>
+  </section>
+
+  <section id="nosotros" class="split dark">
+    <div class="logo-box">
+      <div class="circle">
+        <b>POSITIVO</b><em>IND.</em>
+        <small>Calle Laprida - B° 9 de Julio<br>La Trinidad - Tucumán</small>
+      </div>
+    </div>
+    <div class="text">
+      <span class="eyebrow">Nuestra esencia</span>
+      <h2>Más que<br>ropa, una<br>actitud.</h2>
+      <p>Creemos en el estilo simple, auténtico y con carácter. Seleccionamos cada prenda para que te sientas cómodo, seguro y siempre vos.</p>
+      <a href="#local" class="link">Conocé nuestro local →</a>
+    </div>
+  </section>
+
+  <section id="local" class="section light">
+    <span class="eyebrow">Te esperamos</span>
+    <div class="local-row">
+      <h2 class="big">Estamos<br>cerca.</h2>
+      <div class="dir">
+        <small>DIRECCIÓN</small>
+        <p id="direccion">Calle Laprida esq. 9 de Julio</p>
+        <p class="muted" id="ciudad">La Trinidad, Tucumán</p>
+      </div>
+      <a id="mapa" class="btn dark-btn" target="_blank" rel="noopener" href="#">Cómo llegar →</a>
+    </div>
+  </section>
+
+  <section id="contacto" class="section dark">
+    <span class="eyebrow">Hablemos</span>
+    <h2 class="big">¿Buscás tu<br>próximo look?</h2>
+    <a id="wsp" class="link" target="_blank" rel="noopener" href="#">Escribinos por WhatsApp →</a>
+
+    <form id="form" class="form">
+      <input name="nombre" placeholder="Tu nombre" required maxlength="80">
+      <input name="telefono" placeholder="Teléfono (opcional)">
+      <textarea name="mensaje" rows="4" placeholder="Tu mensaje" required maxlength="1000"></textarea>
+      <button class="btn" type="submit">Enviar mensaje</button>
+      <p id="estado" class="muted"></p>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <span class="logo">POSITIVO <i>IND.</i></span>
+    <span>LA TRINIDAD · TUCUMÁN</span>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
