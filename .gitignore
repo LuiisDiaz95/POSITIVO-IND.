@@ -1,0 +1,16 @@
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Dependencias de npm
+node_modules/
+
+# Archivos de logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
