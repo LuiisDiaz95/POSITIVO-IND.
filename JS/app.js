@@ -1,4 +1,4 @@
-import {supabase} from './supabase.js';
+import { supabase } from './supabase.js';
 /* ====== CONFIGURACIÓN (editá estos datos) ====== */
 const CONFIG = {
   whatsapp: '5493810000000', // código país + área + número, sin + ni espacios
@@ -7,7 +7,12 @@ const CONFIG = {
   mapa: 'https://www.google.com/maps/search/?api=1&query=Calle+Laprida+y+9+de+Julio+La+Trinidad+Tucuman'
 };
 let PRODUCTOS = [];
-
+const MAPEO_CATEGORIAS = {
+  remeras: ['remera', 'remeras','camisas'],
+  buzos: ['buzo', 'buzos'],
+  camperas: ['campera', 'camperas', 'camisaco'],
+  pantalones: ['jean', 'jeans', 'bermuda', 'bermudas', 'pantalon', 'pantalones'],
+};
 const $ = s => document.querySelector(s);
 
 const peso = n =>
@@ -81,12 +86,16 @@ async function cargarProductos() {
 ================================================ */
 
 function mostrarProductos(cat = 'todos') {
-
+  const catBoton = cat.toLowerCase().trim();
   const lista = cat === 'todos'
     ? PRODUCTOS
-    : PRODUCTOS.filter(p =>
-        normalizar(p.categoria?.nombre) === normalizar(cat)
-      );
+    : PRODUCTOS.filter(p => {
+      const nombreCatDb = p.categoria?.nombre?.toLowerCase() || '';
+        
+        const palabrasClave = MAPEO_CATEGORIAS[catBoton] || [catBoton];
+
+        return palabrasClave.some(palabra => nombreCatDb.includes(palabra));
+      });
 
   $('#productos').innerHTML = lista.map(p => {
 
@@ -105,14 +114,14 @@ function mostrarProductos(cat = 'todos') {
 
         <div class="ph">
           ${imagen
-            ? `<img
+        ? `<img
                 src="${imagen}"
                 alt="${p.nombre}"
                 loading="lazy"
                 onerror="this.style.display='none'; this.parentElement.textContent='${p.nombre[0]}'"
               >`
-            : p.nombre[0]
-          }
+        : p.nombre[0]
+      }
         </div>
 
         <div class="info">
@@ -128,9 +137,9 @@ function mostrarProductos(cat = 'todos') {
           <p class="talles">
             Talles:
             ${tallesDisponibles.length
-              ? tallesDisponibles.join(' · ')
-              : 'Sin stock'
-            }
+        ? tallesDisponibles.join(' · ')
+        : 'Sin stock'
+      }
           </p>
 
           <a
@@ -163,7 +172,6 @@ $('#filtros').addEventListener('click', e => {
     .forEach(x => x.classList.remove('active'));
 
   b.classList.add('active');
-
   mostrarProductos(b.dataset.cat);
 });
 
